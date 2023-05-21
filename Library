@@ -1,0 +1,57 @@
+--[[
+
+--// Module created 4/3/23
+--// Created by cdzn 
+--// Project Pat
+--// Posted to github on 21/5/23
+--// Okay so cos this is open source dont cry when bypass 🤯😆😭💎
+]]
+
+getgenv().Settings = {
+    AntiPrint = false,
+    AntiBeautify = false,
+    AntiDump = false
+}
+
+
+if getgenv().Settings.AntiPrint then
+    local function antiPrint(...)
+  local info = debug.getinfo(2)
+  if info and info.what == 'Lua' and info.func == print then
+    return
+  end
+  return print(...)
+end
+
+
+print = antiPrint
+rconsoleprint = antiPrint
+rconsolewarn = antiprint
+end
+
+
+if getgenv().Settings.AntiBeautify then 
+    local lineNumberToCheck = 35
+
+--// Below is the code that needs to be on ur line (check line 1 for lua obfuscators or whatever its on cos when minified it will all be on same line)
+local info = debug.getinfo(1, "Sl")
+
+-- Check if the current line number matches the line number we want to check
+if info.currentline == lineNumberToCheck then
+  -- True
+    print("The code is on line " .. lineNumberToCheck)
+else
+ -- False
+  print("The code is not on line " .. lineNumberToCheck)
+end
+
+end
+
+--// Didnt test if this even works just an idea idk may just error the console they are trynna dump info
+
+if getgenv().Settings.AntiDump then 
+--// Removed just use anti print LOL or make ur own skid (jk ily this is literally public)
+    end
+
+--// Prints below!
+print 'Test'
